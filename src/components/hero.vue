@@ -1,16 +1,21 @@
+<script setup>
+
+import heroBg from '@/assets/images/hero.png'
+</script>
+
 <template>
     <section
         id="home"
         class="relative min-h-screen overflow-hidden bg-green-950"
     >
 
-        <!-- Background -->
+        <!-- Background dengan Inline Style Dynamic Bind (:style) -->
         <div
             class="absolute inset-0 bg-cover bg-center"
-            < style="background-image: url('/src/assets/images/hero.png')" 
+            :style="{ backgroundImage: `url(${heroBg})` }"
         ></div>
 
-        <!-- Overlay -->
+        <!-- Overlay Gradient -->
         <div
             class="absolute inset-0 bg-gradient-to-r
             from-black/70
@@ -25,7 +30,6 @@
         >
 
             <div class="max-w-xl">
-
 
                 <!-- Main Heading -->
                 <h1
@@ -52,7 +56,7 @@
                     and build your own adventure.
                 </p>
 
-                <!-- Button -->
+                <!-- Action Buttons -->
                 <div class="mt-8 flex flex-wrap gap-4">
 
                     <a
@@ -87,7 +91,7 @@
 
         </div>
 
-        <!-- Bottom Gradient -->
+        <!-- Bottom Gradient Overlay -->
         <div
             class="absolute bottom-0 left-0 h-32 w-full
             bg-gradient-to-t from-green-950
