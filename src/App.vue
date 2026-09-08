@@ -1,47 +1,69 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
+import { onMounted } from 'vue'
+import AOS from 'aos'
+import 'aos/dist/aos.css'
+
+import Navbar from './components/navbar.vue'
+import Hero from './components/hero.vue'
+import Starter from './components/starter.vue'
+import About from './components/aboutworld.vue'
+import Gameplay from './components/gameplay.vue'
+import Footer from './components/footer.vue'
+
+onMounted(() => {
+  AOS.init({
+    duration: 800,   // Durasi animasi (ms)
+    once: true,       // Animasi hanya berjalan 1x saat di-scroll
+    easing: 'ease-out-cubic', // Transisi yang halus
+    offset: 100,      // Jarak pemicu animasi dari bawah layar
+  })
+})
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
+  <div class="relative min-h-screen overflow-hidden bg-[#001b16] text-white">
 
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
+    <div
+      class="pointer-events-none fixed inset-0 z-0 opacity-[0.07]"
+      style="
+        background-image:
+          linear-gradient(rgba(16,185,129,0.35) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(16,185,129,0.35) 1px, transparent 1px);
+        background-size: 64px 64px;
+      "
+    ></div>
+
+    <div
+      class="pointer-events-none fixed left-1/2 top-1/2
+             z-0 h-[700px] w-[700px]
+             -translate-x-1/2 -translate-y-1/2
+             rounded-full
+             bg-emerald-500/[0.06]
+             blur-[140px]"
+    ></div>
+
+    <div class="relative z-10">
+      <Navbar />
+
+      <main id="home">
+        <Hero data-aos="fade-up" data-aos-duration="1000" />
+
+        <section data-aos="fade-up" id="about">
+          <About />
+        </section>
+
+        <section data-aos="fade-up"  id="starters">
+          <Starter />
+        </section>
+
+        <section data-aos="fade-up"  id="gameplay">
+          <Gameplay />
+        </section>
+
+        <section data-aos="fade-up">
+          <Footer />
+        </section>
+      </main>
     </div>
-  </header>
-
-  <main>
-    <TheWelcome />
-  </main>
+  </div>
 </template>
-
-<style scoped>
-header {
-  line-height: 1.5;
-}
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-}
-</style>
