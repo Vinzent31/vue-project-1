@@ -7,7 +7,7 @@
         <!-- Background -->
         <div
             class="absolute inset-0 bg-cover bg-center"
-            < style="background-image: url('/src/assets/images/oke.png')" 
+            < style="background-image: url('/src/assets/images/hero.png')" 
         ></div>
 
         <!-- Overlay -->
